@@ -43,21 +43,15 @@ public static class DependencyInjection
         // ── Repositorios ──────────────────────────────────────────────────────
         // Registra aquí tus repositorios (Interfaz en Application -> Implementación en Infrastructure)
         services.AddScoped<IExampleRepository, ExampleRepository>();
+        services.AddScoped<IClienteRepository, ClienteRepository>();
 
         // ── Auth ──────────────────────────────────────────────────────────────
         services.AddScoped<IJwtProvider, JwtProvider>();
         services.AddScoped<IPasswordHasher, PasswordHasher>();
 
-        // Cliente 
-        services.AddScoped<IClienteRepository, ClienteRepository>();
-
-
         // ── Health Checks (base) ──────────────────────────────────────────────
         // Los checks de dependencias se agregan junto con cada feature (BD/Redis/RabbitMQ).
         services.AddHealthChecks();
-
-    
-
 
         // ── Redis (caché distribuido) — OPCIONAL ──────────────────────────────
         // Se activa solo si "Redis:ConnectionString" tiene valor. AbortOnConnectFail=false
@@ -118,8 +112,6 @@ public static class DependencyInjection
             ?? "https://jsonplaceholder.typicode.com";
         services.AddScoped(_ => new ExampleHttpService(exampleApiUrl, PipelineFactory.Create()));
 
-
-       
         return services;
     }
 }

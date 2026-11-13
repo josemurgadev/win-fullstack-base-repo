@@ -22,11 +22,6 @@ public sealed class ClientesController : ControllerBase
         [FromQuery(Name = "limit")] int limite = 10,
         CancellationToken ct = default)
     {
-        if (limite <= 0)
-        {
-            return BadRequest(new { error = "El limite debe ser mayor que cero." });
-        }
-
         var result = await _service.BuscarAsync(termino, limite, ct);
         if (!result.IsSuccess)
         {
