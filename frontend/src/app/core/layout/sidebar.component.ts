@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
+  host: { class: 'flex shrink-0' },
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {}

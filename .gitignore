@@ -17,3 +17,6 @@ frontend/.env
 Thumbs.db
 .idea/
 .vscode/
+
+# PowerShell cache
+/Microsoft/Windows/PowerShell/ModuleAnalysisCache*
