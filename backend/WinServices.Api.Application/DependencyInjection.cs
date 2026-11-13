@@ -18,6 +18,8 @@ public static class DependencyInjection
         // un validador concreto — así no hay dependencia de ninguna clase específica.
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
+        services.AddScoped<IClienteService, ClienteService>();
+        
         // TODO: Registra aquí tus servicios de aplicación reales
         services.AddScoped<IExampleService, ExampleService>();
         return services;
